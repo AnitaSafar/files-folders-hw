@@ -23,20 +23,22 @@ public class DataLoader implements ApplicationRunner {
     }
 
     public void run(ApplicationArguments args) {
-        File x = new File("The X-files", ".pdf", "34GB");
-        fileRepository.save(x);
-
-        File area = new File("Area 51", ".ppt", "104GB");
-        fileRepository.save(area);
-
-        File code = new File("The Da Vinci Code", ".doc", "999MB");
-        fileRepository.save(code);
-
         Folder secret = new Folder("Top Secret");
         folderRepository.save(secret);
 
         Folder books = new Folder("Favourite books");
         folderRepository.save(books);
+
+        File x = new File("The X-files", ".pdf", "34GB", secret);
+        fileRepository.save(x);
+
+        File area = new File("Area 51", ".ppt", "104GB", secret);
+        fileRepository.save(area);
+
+        File code = new File("The Da Vinci Code", ".doc", "999MB", books);
+        fileRepository.save(code);
+
+
 
     }
 }

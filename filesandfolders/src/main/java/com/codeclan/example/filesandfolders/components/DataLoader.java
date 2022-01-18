@@ -1,7 +1,9 @@
 package com.codeclan.example.filesandfolders.components;
 
 import com.codeclan.example.filesandfolders.models.File;
+import com.codeclan.example.filesandfolders.models.Folder;
 import com.codeclan.example.filesandfolders.repositories.FileRepository;
+import com.codeclan.example.filesandfolders.repositories.FolderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
@@ -12,6 +14,9 @@ public class DataLoader implements ApplicationRunner {
 
     @Autowired
     FileRepository fileRepository;
+
+    @Autowired
+    FolderRepository folderRepository;
 
     public DataLoader() {
 
@@ -26,6 +31,12 @@ public class DataLoader implements ApplicationRunner {
 
         File code = new File("The Da Vinci Code", ".doc", "999MB");
         fileRepository.save(code);
+
+        Folder secret = new Folder("Top Secret");
+        folderRepository.save(secret);
+
+        Folder books = new Folder("Favourite books");
+        folderRepository.save(books);
 
     }
 }

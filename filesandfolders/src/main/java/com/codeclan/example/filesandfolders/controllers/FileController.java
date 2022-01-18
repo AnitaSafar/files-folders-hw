@@ -22,4 +22,14 @@ public class FileController {
     public ResponseEntity<List<File>> getAllFiles() {
         return new ResponseEntity<>(fileRepository.findAll(), HttpStatus.OK);
     }
+
+    @GetMapping(value = "/files/{id}")
+    public ResponseEntity<Optional<File>> getFile(@PathVariable Long id) {
+        Optional<File> payload = fileRepository.findById(id);
+        if(payload.isPresent()) {
+            return new ResponseEntity<>(payload, HttpStatus.OK);
+        } else {
+            return new ResponseEntity<>(payload, HttpStatus.NOT_FOUND);
+        }
+    }
 }

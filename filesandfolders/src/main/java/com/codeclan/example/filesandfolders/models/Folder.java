@@ -22,7 +22,7 @@ public class Folder {
     private List<File> files;
 
     @ManyToOne
-    @JoinColumn(name = "folder_id", nullable = false)
+    @JoinColumn(name = "user_id", nullable = false)
     @JsonBackReference
     private User user;
 

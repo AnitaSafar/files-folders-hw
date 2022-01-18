@@ -21,8 +21,14 @@ public class Folder {
     @OneToMany(mappedBy = "folder", fetch = FetchType.LAZY)
     private List<File> files;
 
-    public Folder(String name) {
+    @ManyToOne
+    @JoinColumn(name = "folder_id", nullable = false)
+    @JsonBackReference
+    private User user;
+
+    public Folder(String name, User user) {
         this.name = name;
+        this.user = user;
     }
 
     public Folder() {
@@ -51,5 +57,13 @@ public class Folder {
 
     public void setFiles(List<File> files) {
         this.files = files;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }
